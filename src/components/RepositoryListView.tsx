@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import RepoCard from "./RepositoryCard";
 import { Loader2Icon, Plus, RefreshCcw } from "lucide-react";
 import { repositories } from "../lib/dummyData";
@@ -8,21 +8,12 @@ import { Button } from "./ui/button";
 const RepositoryListView: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
   const [searchTerm, setSearchTerm] = React.useState("");
-  const [animateCards, setAnimateCards] = React.useState(false);
-  const [showCards, setShowCards] = React.useState(false);
 
   const handleRefresh = (until: number) => {
     setLoading(true);
-    setAnimateCards(false);
-    setShowCards(false);
 
     setTimeout(() => {
       setLoading(false);
-      // Start animation after loading
-      setTimeout(() => {
-        setShowCards(true);
-        setAnimateCards(true);
-      }, 100);
     }, until ?? 3000);
   };
 
